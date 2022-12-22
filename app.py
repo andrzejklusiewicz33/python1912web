@@ -1,6 +1,7 @@
 from flask import Flask,render_template
 from domain import *
 import employees_dao as edao
+import products_dao as pdao
 
 app = Flask(__name__)
 
@@ -11,11 +12,7 @@ def index():
 
 @app.route('/show_products')
 def show_products():
-    data=[
-        Product(1,"Bazuka",1000,"Komenda leci w pył"),
-        Product(2,"Bulbulator",200,"Urządzenie do bulgotania"),
-        Product(3,"Przyczłap do bulbulatora",50,"Taki teges z takim tym że ten, z tym że nie do końca.")
-    ]
+    data=pdao.get_all()
     return render_template("show_products.html",products=data)
 
 @app.route('/show_employees')
@@ -67,7 +64,7 @@ if __name__ == '__main__':
 
 
 
-
+#przerwa do 9:00
 
 
 
