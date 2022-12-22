@@ -1,5 +1,6 @@
 from flask import Flask,render_template
 from domain import *
+import employees_dao as edao
 
 app = Flask(__name__)
 
@@ -10,17 +11,16 @@ def index():
 
 @app.route('/show_products')
 def show_products():
-    return render_template("show_products.html")
+    data=[
+        Product(1,"Bazuka",1000,"Komenda leci w pył"),
+        Product(2,"Bulbulator",200,"Urządzenie do bulgotania"),
+        Product(3,"Przyczłap do bulbulatora",50,"Taki teges z takim tym że ten, z tym że nie do końca.")
+    ]
+    return render_template("show_products.html",products=data)
 
 @app.route('/show_employees')
 def show_employees():
-    data=[
-        Employee(1,"Tomasz","Mrzygłód",10000, "Fajny kolega  z zespołu, szkoda że weganin"),
-        Employee(2,"Janusz","Polak",2000,"Typowy Janusz (wiadomo, brzuch i wąsy ;) )"),
-        Employee(3,"Nosacz","Socjalny",5000,"Siedzi na socjalu i jeszcze narzeka")
-    ]
-
-    return render_template("show_employees.html",employees=data)
+    return render_template("show_employees.html",employees=edao.get_all())
 @app.route("/about")
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
@@ -61,3 +61,14 @@ if __name__ == '__main__':
 #64. Stwórz klasę Product odwzorowujaca wiersze z tabeli products. W obsludze widoku /show_products stwórz
 #listę obiektów tej klasy i przekaż do widoku. Na poziomie widoku wyświetl w formie tabelarycznej
 #dane o id produktów i nazwach produktów. Niech będzie też jakas kolumna w ktorej w przyszlosci beda guziki
+
+#65. Oddeleguj tworzenie listy produktow do osobnej funkcji get_all w osobnym module products_dao.
+# W kontrolerze widoku /show_products skorzystaj z nowo stworzonej funkcji do odebrania i przekazania danych.
+
+
+
+
+
+
+
+
