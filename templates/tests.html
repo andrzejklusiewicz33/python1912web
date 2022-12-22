@@ -9,6 +9,13 @@
 {% include 'menu.html' %}
 
 <h3>Strona do testów</h3>
-
+{{ liczba }}
+<br>
+{{ krotka }}
+<ul>
+{% for k in krotka %}
+    <li>{{ k }}</li>
+{% endfor %}
+</ul>
 </body>
 </html>

@@ -19,7 +19,7 @@ def about():
     return render_template("about.html")
 @app.route('/tests')
 def tests():
-    return render_template('tests.html')
+    return render_template('tests.html',liczba=123,krotka=('A','B','C'))
     #return "<h1>Testy</h1>"
 
 
@@ -36,3 +36,6 @@ if __name__ == '__main__':
 #60. Zadbaj o to by kazdy ekran powodowal wyswietlenie innego pliku html z jakims naglowkiem
 
 #61. Zadbaj o to by na wszystkich stronach było menu z linkami do wszystkich stron...
+
+#62. Do ekranu about przekaż swoje imię, nazwisko i email i wyświetl w tabelce jako dane autora.
+
