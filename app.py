@@ -4,9 +4,11 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+def index():
+    return 'tekst zmieniony'
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True,port=80)
+
+#58. Uruchom aplikację w trybie debug na porcie 80 (albo 8080)
