@@ -1,4 +1,5 @@
 from flask import Flask,render_template
+from domain import *
 
 app = Flask(__name__)
 
@@ -16,10 +17,12 @@ def show_employees():
     return render_template("show_employees.html")
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html",first_name="Andrzej",last_name="Klusiewicz",email="klusiewicz@jsystems.pl")
+
 @app.route('/tests')
 def tests():
-    return render_template('tests.html',liczba=123,krotka=('A','B','C'))
+    fruit=Fruit("banana",'yellow')
+    return render_template('tests.html',liczba=123,krotka=('A','B','C'),fruit=fruit)
     #return "<h1>Testy</h1>"
 
 
@@ -39,3 +42,7 @@ if __name__ == '__main__':
 
 #62. Do ekranu about przekaż swoje imię, nazwisko i email i wyświetl w tabelce jako dane autora.
 
+#63. Stwórz moduł domain i umieść w nim klasę Author z polami na imię, nazwisko i email.
+# Stwórz uzupełniwszy (przyda się konstruktor sparametryzowany) dane obiekt klasy Author i przekaż
+# go do widoku ekranu /about. Na poziomie ekranu nie korzystaj już z wczesniej przekazywanych zmiennych
+# tylko z danych przekazanych w obiekcie klasy Author.
