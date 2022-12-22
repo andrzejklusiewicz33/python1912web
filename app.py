@@ -14,11 +14,19 @@ def show_products():
 
 @app.route('/show_employees')
 def show_employees():
-    return render_template("show_employees.html")
+    data=[
+        Employee(1,"Tomasz","Mrzygłód",10000, "Fajny kolega  z zespołu, szkoda że weganin"),
+        Employee(2,"Janusz","Polak",2000,"Typowy Janusz (wiadomo, brzuch i wąsy ;) )"),
+        Employee(3,"Nosacz","Socjalny",5000,"Siedzi na socjalu i jeszcze narzeka")
+    ]
+
+    return render_template("show_employees.html",employees=data)
 @app.route("/about")
 def about():
-    return render_template("about.html",first_name="Andrzej",last_name="Klusiewicz",email="klusiewicz@jsystems.pl")
-
+    author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
+    return render_template("about.html",author=author)
+    #return render_template("about.html",first_name="Andrzej",last_name="Klusiewicz",email="klusiewicz@jsystems.pl")
+#kwargs
 @app.route('/tests')
 def tests():
     fruit=Fruit("banana",'yellow')
@@ -46,3 +54,10 @@ if __name__ == '__main__':
 # Stwórz uzupełniwszy (przyda się konstruktor sparametryzowany) dane obiekt klasy Author i przekaż
 # go do widoku ekranu /about. Na poziomie ekranu nie korzystaj już z wczesniej przekazywanych zmiennych
 # tylko z danych przekazanych w obiekcie klasy Author.
+
+
+#przerwa do 15:12
+
+#64. Stwórz klasę Product odwzorowujaca wiersze z tabeli products. W obsludze widoku /show_products stwórz
+#listę obiektów tej klasy i przekaż do widoku. Na poziomie widoku wyświetl w formie tabelarycznej
+#dane o id produktów i nazwach produktów. Niech będzie też jakas kolumna w ktorej w przyszlosci beda guziki
