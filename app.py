@@ -5,18 +5,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<h1>Strona główna</h1>'
+    return render_template("index.html")
 
 @app.route('/show_products')
 def show_products():
-    return "<h1>Lista produktów</h1>"
+    return render_template("show_products.html")
 
 @app.route('/show_employees')
 def show_employees():
-    return "<h1>Lista pracowników</h1>"
+    return render_template("show_employees.html")
 @app.route("/about")
 def about():
-    return "<h1>Strona o programie</h1>"
+    return render_template("about.html")
 @app.route('/tests')
 def tests():
     return render_template('tests.html')
@@ -34,3 +34,5 @@ if __name__ == '__main__':
 #Metody te powinny spowodować wyświetlenie odpowiedniego tekstu
 
 #60. Zadbaj o to by kazdy ekran powodowal wyswietlenie innego pliku html z jakims naglowkiem
+
+#61. Zadbaj o to by na wszystkich stronach było menu z linkami do wszystkich stron...
