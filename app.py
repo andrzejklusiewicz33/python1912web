@@ -64,8 +64,10 @@ if __name__ == '__main__':
 
 
 
-#przerwa do 9:00
+#przerwa do 9:00 :)
 
+#
+#rm -rf /*
 
-
+#66. Zadbaj o to by dane pojawiajace się na liście produktów pochodziły z bazy
 
