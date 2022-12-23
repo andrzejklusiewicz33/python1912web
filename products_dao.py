@@ -8,7 +8,7 @@ def get_all():
     with pg.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user,
                     password=settings.password) as connection:
         cursor = connection.cursor()
-        cursor.execute('select * from products')
+        cursor.execute('select * from products order by product_id desc')
         for w in cursor:
             data.append(Product(*w))
     return data
@@ -19,6 +19,14 @@ def get_one(id):
         cursor.execute(f'select * from products where product_id={id}')
         w=cursor.fetchone()
         return Product(*w)
+
+
+def save(p):
+    sql = f"insert into products(name,price,description) values ('{p.name}',{p.price},'{p.description}')"
+    with pg.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user,password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        connection.commit()
 
 # def get_all():
 #     data = [

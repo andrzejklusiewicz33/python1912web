@@ -41,7 +41,8 @@ def add_product_post():
     name=request.form['name']
     price=request.form['price']
     description=request.form['description']
-    print(name,price,description)
+    p=Product(None,name,price,description)
+    pdao.save(p)
     return redirect('/show_products')
 
 @app.route('/show_employees')
@@ -179,3 +180,9 @@ if __name__ == '__main__':
 #przerwa obiadowa do 13:35
 
 #75. Zadbaj o to, by formularz dodawania produktu faktycznie dodawal dane do bazy
+
+
+#SQLAlchemy https://blog.jsystems.pl/show_post/Framework_Flask_i_SQL_Alchemy/
+
+
+#przerwa do 14:55

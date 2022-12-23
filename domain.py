@@ -28,3 +28,9 @@ class Product:
         self.description=description
     def __str__(self):
         return str(self.__dict__)
+
+#
+# class QueastionaireForm:
+#     def __init__(self,term_id):
+#         self.term=term_dao.get_one(term_id)
+#         self.training=training_dao.get_one(self.term.term_id)
