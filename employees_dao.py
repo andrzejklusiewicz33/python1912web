@@ -19,6 +19,13 @@ def get_one(id):
         w=cursor.fetchone()
         return Employee(*w)
 
+def save(e):
+    sql=f"insert into employees(first_name,last_name,salary,description) values ('{e.first_name}','{e.last_name}', {e.salary},'{e.description}')"
+    with pg.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user,password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        connection.commit()
+
         # print(w)
         # e=Employee(*w)
         # print(e)

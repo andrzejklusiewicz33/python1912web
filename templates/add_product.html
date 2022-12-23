@@ -7,5 +7,18 @@
 <body>
 {% include 'menu.html' %}
 <h3>Dodawanie produktu</h3>
+<form method="post">
+    <table border="1">
+        <tr><th>Nazwa</th><td><input name="name" size="50"/></td></tr>
+                <tr><th>Cena</th><td><input name="price" type="number"/></td></tr>
+                <tr><th>Opis</th><td>
+                        <textarea name="description" rows="20" cols="50">
+
+                        </textarea>
+                </td></tr>
+    </table>
+    <input type="submit" value="Zapisz">
+    <a href="javascript:history.back()">Powrót</a>
+</form>
 </body>
 </html>

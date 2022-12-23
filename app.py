@@ -22,10 +22,7 @@ def products_json():
 @app.route('/product_details')
 def product_details():
     id=request.args.get("id")
-    print(f"szczegóły produktu o id={id}")
     product=pdao.get_one(id)
-    print(f'product={product}')
-    #return "OK"
     return render_template("product_details.html",product=product)
 
 @app.route('/product_details.json')
@@ -34,10 +31,18 @@ def product_details_json():
     product=pdao.get_one(id)
     return product.__dict__
 
-@app.route('/add_product')
+@app.route('/add_product',methods=['GET'])
 def add_product():
     return render_template("add_product.html")
 
+
+@app.route('/add_product',methods=['POST'])
+def add_product_post():
+    name=request.form['name']
+    price=request.form['price']
+    description=request.form['description']
+    print(name,price,description)
+    return redirect('/show_products')
 
 @app.route('/show_employees')
 def show_employees():
@@ -46,11 +51,8 @@ def show_employees():
 @app.route('/employee_details')
 def employee_details():
     id=request.args.get('id')
-    print(f'będą szczegóły pracownika o id={id}')
     employee=edao.get_one(id)
-    print(f"employee={employee}")
     return render_template("employee_details.html",employee=employee)
-    #return "OK"
 
 @app.route('/employee_details.json')
 def employee_details_json():
@@ -74,7 +76,8 @@ def add_employee_post():
     last_name=request.form['last_name']
     salary=request.form['salary']
     description=request.form['description']
-    print(first_name,last_name,salary,description)
+    e=Employee(None,first_name,last_name,salary,description)
+    edao.save(e)
     return redirect("/show_employees")
 
 
@@ -82,8 +85,6 @@ def add_employee_post():
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
     return render_template("about.html",author=author)
-    #return render_template("about.html",first_name="Andrzej",last_name="Klusiewicz",email="klusiewicz@jsystems.pl")
-#kwargs
 
 @app.route('/about.json')
 def about_json():
@@ -97,7 +98,6 @@ def about_json():
 def tests():
     fruit=Fruit("banana",'yellow')
     return render_template('tests.html',liczba=123,krotka=('A','B','C'),fruit=fruit)
-    #return "<h1>Testy</h1>"
 
 
 if __name__ == '__main__':
@@ -175,3 +175,7 @@ if __name__ == '__main__':
 
 #74. Dodaj formularz do dodawania produktu i w obsludze jego POSTa zbierz dane z formularza, wyswietl na
 #konsoli i przekieruj na listę produktów
+
+#przerwa obiadowa do 13:35
+
+#75. Zadbaj o to, by formularz dodawania produktu faktycznie dodawal dane do bazy
