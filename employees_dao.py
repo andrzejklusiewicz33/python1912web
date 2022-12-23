@@ -12,6 +12,18 @@ def get_all():
             data.append(Employee(*w))
     return data
 
+def get_one(id):
+    with pg.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user,password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(f'select * from employees where employee_id={id}')
+        w=cursor.fetchone()
+        return Employee(*w)
+
+        # print(w)
+        # e=Employee(*w)
+        # print(e)
+        # return e
+
 #PGBENCH + PGBENCH TOOLS
 #return Employee.query.filter(salary>1000).all()
 

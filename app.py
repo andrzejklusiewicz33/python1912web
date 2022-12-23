@@ -15,6 +15,12 @@ def show_products():
     data=pdao.get_all()
     return render_template("show_products.html",products=data)
 
+@app.route('/product_details')
+def product_details():
+    id=request.args.get("id")
+    print(f"szczegóły produktu o id={id}")
+    return "OK"
+
 @app.route('/show_employees')
 def show_employees():
     return render_template("show_employees.html",employees=edao.get_all())
@@ -23,6 +29,8 @@ def show_employees():
 def employee_details():
     id=request.args.get('id')
     print(f'będą szczegóły pracownika o id={id}')
+    employee=edao.get_one(id)
+    print(f"employee={employee}")
     return "OK"
 
 @app.route("/about")
@@ -81,3 +89,9 @@ if __name__ == '__main__':
 #67. Do listy produktów dodaj link "pokaż szczegóły" który będzie prowadził do strony szczegółów danego produktu.
 # W reakcji na wejscie na adres tego nowego ekranu wyswietl w przegladarce komunikat "OK" a na konsoli wyświetl
 # id odczytane z paska
+
+#przerwa do 10:15
+
+#68. Dodaj pobierajaca z bazy pojedynczy  obiekt klasty klasy Product na podstawie id funkcję get_one do products_dao.
+# W kontrolerze ekranu /product_details pobierz id produktu z paska i na jego podstawie wybierz z pomoca
+# nowej funkcji wlasciwy obiekt i wyswietl go na konsoli

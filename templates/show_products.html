@@ -13,7 +13,9 @@
 <table border="1">
     <tr><th>Id produktu</th><th>Nazwa</th><th>Akcje</th></tr>
     {% for p in products %}
-        <tr><td>{{ p.product_id }}</td><td>{{ p.name }}</td><td>---</td></tr>
+        <tr><td>{{ p.product_id }}</td><td>{{ p.name }}</td><td>
+            <a href="/product_details?id={{ p.product_id }}">Pokaż szczegóły</a>
+        </td></tr>
     {% endfor %}
 </table>
 </body>
