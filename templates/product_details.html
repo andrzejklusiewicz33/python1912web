@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% include 'menu.html' %}
+<h3>Szczegóły produktu</h3>
+<table border="1" class="bootstrap_.....">
+<tr><th>Id produktu</th><td>{{ product.product_id }}</td></tr>
+<tr><th>Nazwa</th><td>{{ product.name }}</td></tr>
+<tr><th>Cena</th><td>{{ product.price }}</td></tr>
+<tr><th>Opis</th><td>{{ product.description }}</td></tr>
+</table>
+</body>
+</html>

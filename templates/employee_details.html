@@ -11,7 +11,16 @@
     <tr><th>Id pracownika</th><td>{{ employee.employee_id }}</td></tr>
     <tr><th>Imię</th><td>{{ employee.first_name }}</td></tr>
     <tr><th>Nazwisko</th><td>{{ employee.last_name }}</td></tr>
-    <tr><th>Wynagrodzenie</th><td>{{ employee.salary }}</td></tr>
+    <tr><th>Wynagrodzenie</th>
+        <td>
+        {% if employee.salary>=5000 %}
+            <font color="red"><b>    {{ employee.salary }} </b></font>
+        {% else %}
+            <font color="#006400"><b>    {{ employee.salary }} </b></font>
+        {% endif %}
+
+        </td>
+    </tr>
     <tr><th>Opis</th><td>{{ employee.description }}</td></tr>
 </table>
 </body>

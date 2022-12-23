@@ -21,7 +21,8 @@ def product_details():
     print(f"szczegóły produktu o id={id}")
     product=pdao.get_one(id)
     print(f'product={product}')
-    return "OK"
+    #return "OK"
+    return render_template("product_details.html",product=product)
 
 @app.route('/show_employees')
 def show_employees():
@@ -100,3 +101,11 @@ if __name__ == '__main__':
 # nowej funkcji wlasciwy obiekt i wyswietl go na konsoli
 
 #69. Spowoduj by ekran szczegółów produktu wyświetlał dane pochodzące z bazy
+
+
+# klusiewicz@jsystems.pl
+
+#Bootstrap
+
+#70. Zadbaj o to by na ekranie szczegółów produktu - jeśli cena jest wieksza badz rowna 1000 zl to ma sie wyswietlac
+# na czerwono pogrubiona, a jesli mniej to na zielono pogrubiona.
