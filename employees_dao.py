@@ -7,7 +7,7 @@ def get_all():
     data = []
     with pg.connect(host=settings.host,database=settings.database,port=settings.port, user=settings.user,password=settings.password) as connection:
         cursor=connection.cursor()
-        cursor.execute('select * from employees')
+        cursor.execute('select * from employees ORDER BY EMPLOYEE_iD DESC')
         for w in cursor:
             data.append(Employee(*w))
     return data

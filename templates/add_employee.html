@@ -7,5 +7,19 @@
 <body>
 {% include 'menu.html' %}
 <h3>Dodawanie pracownika</h3>
+<form method="post">
+    <table border="1">
+    <tr><th>Imię</th><td><input size="50" name="first_name"/></td></tr>
+        <tr><th>Nazwisko</th><td><input size="50" type="text" name="last_name"/></td></tr>
+        <tr><th>Wynagrodzenie</th><td><input type="number" name="salary"/></td></tr>
+        <tr><th>Opis</th><td>
+            <textarea cols="50" rows="20" name="description">
+
+            </textarea>
+        </td></tr>
+    </table>
+    <input type="submit" value="Zapisz"/>
+    <a href="javascript:history.back()">Powrót</a>
+</form>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect
 from domain import *
 import employees_dao as edao
 import products_dao as pdao
@@ -34,6 +34,11 @@ def product_details_json():
     product=pdao.get_one(id)
     return product.__dict__
 
+@app.route('/add_product')
+def add_product():
+    return render_template("add_product.html")
+
+
 @app.route('/show_employees')
 def show_employees():
     return render_template("show_employees.html",employees=edao.get_all())
@@ -62,6 +67,15 @@ def employees_json():
 @app.route('/add_employee')
 def add_employee():
     return render_template("add_employee.html")
+
+@app.route('/add_employee',methods=['POST'])
+def add_employee_post():
+    first_name=request.form['first_name']
+    last_name=request.form['last_name']
+    salary=request.form['salary']
+    description=request.form['description']
+    print(first_name,last_name,salary,description)
+    return redirect("/show_employees")
 
 
 @app.route("/about")
@@ -158,3 +172,6 @@ if __name__ == '__main__':
 
 
 #73. Na liście produktów dodaj link "Dodaj produkt" prowadzący do na razie pustego ekranu z menu i nagłówkiem.
+
+#74. Dodaj formularz do dodawania produktu i w obsludze jego POSTa zbierz dane z formularza, wyswietl na
+#konsoli i przekieruj na listę produktów
