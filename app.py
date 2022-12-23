@@ -37,12 +37,28 @@ def employee_details():
     return render_template("employee_details.html",employee=employee)
     #return "OK"
 
+@app.route('/employee_details.json')
+def employee_details_json():
+    id = request.args.get('id')
+    employee = edao.get_one(id)
+    return employee.__dict__
+
+
 @app.route("/about")
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
     return render_template("about.html",author=author)
     #return render_template("about.html",first_name="Andrzej",last_name="Klusiewicz",email="klusiewicz@jsystems.pl")
 #kwargs
+
+@app.route('/about.json')
+def about_json():
+    #data={"key1":1234,"key2":"whatever"}
+    #return data
+    author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
+    return author.__dict__
+
+
 @app.route('/tests')
 def tests():
     fruit=Fruit("banana",'yellow')
@@ -109,3 +125,6 @@ if __name__ == '__main__':
 
 #70. Zadbaj o to by na ekranie szczegółów produktu - jeśli cena jest wieksza badz rowna 1000 zl to ma sie wyswietlac
 # na czerwono pogrubiona, a jesli mniej to na zielono pogrubiona.
+
+#71. Na liście produktów dodaj link prowadzący do usługi sieciowej prezentujacej w formacie json obiekt ktorego
+#    id przekazemy przez pasek

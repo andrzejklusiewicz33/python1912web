@@ -10,7 +10,13 @@
 <table border="1" class="bootstrap_.....">
 <tr><th>Id produktu</th><td>{{ product.product_id }}</td></tr>
 <tr><th>Nazwa</th><td>{{ product.name }}</td></tr>
-<tr><th>Cena</th><td>{{ product.price }}</td></tr>
+<tr><th>Cena</th><td>
+    {% if product.price>=1000 %}
+        <font color="red"><b>{{ product.price }}</b></font>
+        {% else %}
+        <font color="#006400"><b>{{ product.price }}</b></font>
+    {% endif %}
+</td></tr>
 <tr><th>Opis</th><td>{{ product.description }}</td></tr>
 </table>
 </body>

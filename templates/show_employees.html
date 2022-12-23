@@ -15,6 +15,7 @@
         <tr><td>{{ e.employee_id }}</td><td>{{ e.first_name }}</td><td>{{ e.last_name }}</td>
             <td>
                 <a href="/employee_details?id={{ e.employee_id }}">Pokaż szczegóły</a>
+                <a href="/employee_details.json?id={{ e.employee_id }}">Pokaż szczegóły [REST]</a>
             </td>
         </tr>
     {% endfor %}
