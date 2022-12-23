@@ -15,6 +15,10 @@ def show_products():
     data=pdao.get_all()
     return render_template("show_products.html",products=data)
 
+@app.route('/products.json')
+def products_json():
+    return [p.__dict__ for p in pdao.get_all()]
+
 @app.route('/product_details')
 def product_details():
     id=request.args.get("id")
@@ -53,6 +57,11 @@ def employee_details_json():
 @app.route('/employees.json')
 def employees_json():
     return [e.__dict__ for e in edao.get_all()]
+
+
+@app.route('/add_employee')
+def add_employee():
+    return render_template("add_employee.html")
 
 
 @app.route("/about")
@@ -144,3 +153,8 @@ if __name__ == '__main__':
 
 #72. Dodaj ekran który będzie zwracał dane o wszystkich produktach w formacie json. Dodaj też prowadzący do niego
 # link z menu
+
+#FASTAPI
+
+
+#73. Na liście produktów dodaj link "Dodaj produkt" prowadzący do na razie pustego ekranu z menu i nagłówkiem.
