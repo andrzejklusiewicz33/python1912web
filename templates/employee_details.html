@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% include 'menu.html' %}
+<h3>Szczegóły pracownika</h3>
+<table border="1">
+    <tr><th>Id pracownika</th><td>{{ employee.employee_id }}</td></tr>
+    <tr><th>Imię</th><td>{{ employee.first_name }}</td></tr>
+    <tr><th>Nazwisko</th><td>{{ employee.last_name }}</td></tr>
+    <tr><th>Wynagrodzenie</th><td>{{ employee.salary }}</td></tr>
+    <tr><th>Opis</th><td>{{ employee.description }}</td></tr>
+</table>
+</body>
+</html>

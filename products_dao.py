@@ -13,6 +13,13 @@ def get_all():
             data.append(Product(*w))
     return data
 
+def get_one(id):
+    with pg.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user,password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(f'select * from products where product_id={id}')
+        w=cursor.fetchone()
+        return Product(*w)
+
 # def get_all():
 #     data = [
 #         Product(1, "Bazuka", 1000, "Komenda leci w pył"),

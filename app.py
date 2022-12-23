@@ -19,6 +19,8 @@ def show_products():
 def product_details():
     id=request.args.get("id")
     print(f"szczegóły produktu o id={id}")
+    product=pdao.get_one(id)
+    print(f'product={product}')
     return "OK"
 
 @app.route('/show_employees')
@@ -31,7 +33,8 @@ def employee_details():
     print(f'będą szczegóły pracownika o id={id}')
     employee=edao.get_one(id)
     print(f"employee={employee}")
-    return "OK"
+    return render_template("employee_details.html",employee=employee)
+    #return "OK"
 
 @app.route("/about")
 def about():
@@ -95,3 +98,5 @@ if __name__ == '__main__':
 #68. Dodaj pobierajaca z bazy pojedynczy  obiekt klasty klasy Product na podstawie id funkcję get_one do products_dao.
 # W kontrolerze ekranu /product_details pobierz id produktu z paska i na jego podstawie wybierz z pomoca
 # nowej funkcji wlasciwy obiekt i wyswietl go na konsoli
+
+#69. Spowoduj by ekran szczegółów produktu wyświetlał dane pochodzące z bazy
