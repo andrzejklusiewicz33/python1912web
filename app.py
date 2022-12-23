@@ -24,6 +24,12 @@ def product_details():
     #return "OK"
     return render_template("product_details.html",product=product)
 
+@app.route('/product_details.json')
+def product_details_json():
+    id=request.args.get('id')
+    product=pdao.get_one(id)
+    return product.__dict__
+
 @app.route('/show_employees')
 def show_employees():
     return render_template("show_employees.html",employees=edao.get_all())
@@ -42,6 +48,11 @@ def employee_details_json():
     id = request.args.get('id')
     employee = edao.get_one(id)
     return employee.__dict__
+
+
+@app.route('/employees.json')
+def employees_json():
+    return [e.__dict__ for e in edao.get_all()]
 
 
 @app.route("/about")
@@ -128,3 +139,8 @@ if __name__ == '__main__':
 
 #71. Na liście produktów dodaj link prowadzący do usługi sieciowej prezentujacej w formacie json obiekt ktorego
 #    id przekazemy przez pasek
+
+#przerwa do 11:40
+
+#72. Dodaj ekran który będzie zwracał dane o wszystkich produktach w formacie json. Dodaj też prowadzący do niego
+# link z menu

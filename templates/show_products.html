@@ -15,6 +15,7 @@
     {% for p in products %}
         <tr><td>{{ p.product_id }}</td><td>{{ p.name }}</td><td>
             <a href="/product_details?id={{ p.product_id }}">Pokaż szczegóły</a>
+            <a href="/product_details.json?id={{ p.product_id }}">Pokaż szczegóły [REST]</a>
         </td></tr>
     {% endfor %}
 </table>
