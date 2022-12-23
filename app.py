@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 from domain import *
 import employees_dao as edao
 import products_dao as pdao
@@ -18,6 +18,13 @@ def show_products():
 @app.route('/show_employees')
 def show_employees():
     return render_template("show_employees.html",employees=edao.get_all())
+
+@app.route('/employee_details')
+def employee_details():
+    id=request.args.get('id')
+    print(f'będą szczegóły pracownika o id={id}')
+    return "OK"
+
 @app.route("/about")
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
@@ -71,3 +78,6 @@ if __name__ == '__main__':
 
 #66. Zadbaj o to by dane pojawiajace się na liście produktów pochodziły z bazy
 
+#67. Do listy produktów dodaj link "pokaż szczegóły" który będzie prowadził do strony szczegółów danego produktu.
+# W reakcji na wejscie na adres tego nowego ekranu wyswietl w przegladarce komunikat "OK" a na konsoli wyświetl
+# id odczytane z paska
